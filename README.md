@@ -2,11 +2,11 @@
 
 ## Instructions
 
-- **Fork** this repository, then clone your fork.
-- Run `npm install` to download dependencies.
-- Run the server using `npm start`.
-- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
-- Still inside the `client` folder run `npm start` to run the client application.
+[x]- **Fork** this repository, then clone your fork.
+[x]- Run `npm install` to download dependencies.
+[x]- Run the server using `npm start`.
+[x]- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
+[x]- Still inside the `client` folder run `npm start` to run the client application.
 
 ### Part 1 - Updating A Movie:
 
@@ -17,16 +17,13 @@
 - When the call comes back successfully, reset your form state and route the user to `/movies` where they will see the updated movie in the list
 
 Movie object format:
-
-```
 {
-  id: 5,
-  title: 'Tombstone',
-  director: 'George P. Cosmatos',
-  metascore: 89,
-  stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
+id: 5,
+title: 'Tombstone',
+director: 'George P. Cosmatos',
+metascore: 89,
+stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
 }
-```
 
 ### Part 2 - Deleting A Movie:
 

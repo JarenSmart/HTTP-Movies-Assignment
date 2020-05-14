@@ -3,7 +3,8 @@ import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
-import axios from 'axios';
+import UpdateMovieForm from "./Movies/UpdateMovieForm";
+import axios from "axios";
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -12,12 +13,19 @@ const App = () => {
   const getMovieList = () => {
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => setMovieList(res.data))
-      .catch(err => console.log(err.response));
+      .then((res) => setMovieList(res.data))
+      .catch((err) => console.log(err.response));
   };
 
-  const addToSavedList = movie => {
-    setSavedList([...savedList, movie]);
+  const addToSavedList = (movie) => {
+    let xx = savedList.map((savedInList) => {
+      return savedInList.title;
+    });
+    if (xx.includes(movie.title)) {
+      alert("cant add 2 movies of the same title");
+    } else {
+      setSavedList([...savedList, movie]);
+    }
   };
 
   useEffect(() => {
@@ -33,8 +41,19 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+        <Movie addToSavedList={addToSavedList} getMovieList={getMovieList} />
       </Route>
+      <Route
+        path="/update-movie/:id"
+        render={(props) => (
+          <UpdateMovieForm
+            {...props}
+            movieList={movieList}
+            setMovieList={setMovieList}
+            getMovieList={getMovieList}
+          />
+        )}
+      />
     </>
   );
 };
